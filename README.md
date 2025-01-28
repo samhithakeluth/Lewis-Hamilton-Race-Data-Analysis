@@ -19,3 +19,5 @@ Install the required libraries
 Run the analysis code to visualize Hamilton's race performance and gain insights  
 
 This project provides an easy-to-understand overview of Lewis Hamilton's remarkable career using visual data analysis techniques.
+
+I've used data obtained from Kaggle (thanks and cheers!)

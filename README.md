@@ -1,4 +1,6 @@
-# Lewis-Hamilton-Race-Data-Analysis
+
+# Lewis-Hamilton-Race-Data-Analysis![Lewis Hamilton](https://github.com/user-attachments/assets/e80ee51d-9a04-4a32-8f16-ccbdb7b1503a)
+
 
 This project provides a comprehensive analysis of Lewis Hamilton's Formula 1 (2007-Early 2024) career using race data. By leveraging Python libraries such as Pandas, Seaborn, and Matplotlib, we explore key metrics like grid positions, wins per year, car models, and countries where he raced.
 

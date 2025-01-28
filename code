@@ -1,0 +1,73 @@
+#install pandas, seaborn and matlab initially
+!pip install matplotlib seaborn pandas
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+sns.set(style="whitegrid")
+
+from google.colab import files
+uploaded = files.upload()
+
+data = pd.read_csv('/lewishamilton (1).csv') #copy path and place between ' ' 
+
+data['race_position'] = pd.to_numeric(data['race_position'], errors='coerce')
+
+plt.figure(figsize=(10, 6))
+sns.countplot(x='grid_position', data=data, palette='coolwarm')
+plt.title('Number of Races vs Grid Positions')
+plt.xlabel('Grid Position')
+plt.ylabel('Number of Races')
+plt.xticks(rotation=45)
+plt.show()
+
+plt.figure(figsize=(10, 6))
+sns.countplot(x='driver_number', data=data, palette='coolwarm')
+plt.title('Number of Races vs Car Number')
+plt.xlabel('Car Number')
+plt.ylabel('Number of Races')
+plt.xticks(rotation=45)
+plt.show()
+
+wins_per_year = data[data['race_position'] == 1].groupby('Year').size().reset_index(name='Wins')
+
+plt.figure(figsize=(10, 6))
+sns.barplot(x='Year', y='Wins', data=wins_per_year, palette='coolwarm')
+plt.title('Number of Wins per Year')
+plt.xlabel('Year')
+plt.ylabel('Number of Wins')
+plt.xticks(rotation=45)
+plt.show()
+
+races_per_year = data.groupby('Year').size().reset_index(name='Number of Races')
+
+plt.figure(figsize=(10, 6))
+sns.barplot(x='Year', y='Number of Races', data=races_per_year, palette='coolwarm')
+plt.title('Number of Races per Year')
+plt.xlabel('Year')
+plt.ylabel('Number of Races')
+plt.xticks(rotation=45)
+plt.show()
+
+car_models = data.groupby('car').size().reset_index(name='Number of Races')
+
+plt.figure(figsize=(10, 6))
+sns.barplot(x='car', y='Number of Races', data=car_models, palette='coolwarm')
+plt.title('Car Models vs Number of Races')
+plt.xlabel('Car Model')
+plt.ylabel('Number of Races')
+plt.xticks(rotation=90)
+plt.show()
+
+data['country'] = data['grand_prix'].apply(lambda x: x.split()[0])
+
+races_per_country = data.groupby('country').size().reset_index(name='Number of GPs')
+
+plt.figure(figsize=(10, 6))
+sns.barplot(x='country', y='Number of GPs', data=races_per_country, palette='coolwarm')
+plt.title('Number of Grand Prix in Each Country')
+plt.xlabel('Country')
+plt.ylabel('Number of GPs')
+plt.xticks(rotation=90)
+plt.show()
